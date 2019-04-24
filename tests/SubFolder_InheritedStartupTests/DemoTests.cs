@@ -11,7 +11,7 @@ namespace SubFolder_InheritedStartupTests
 {
     public class DemoTests : TestsBase
     {
-        public DemoTests(WebApplicationFactory<TestsStartup> factory) : base(factory)
+        public DemoTests(WebApplicationFactory<DemoApi.Program> factory) : base(factory)
         {
         }
 

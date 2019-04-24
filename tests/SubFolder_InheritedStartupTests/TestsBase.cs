@@ -7,11 +7,11 @@ using Xunit;
 
 namespace SubFolder_InheritedStartupTests
 {
-    public abstract class TestsBase : IClassFixture<WebApplicationFactory<TestsStartup>>
+    public abstract class TestsBase : IClassFixture<WebApplicationFactory<DemoApi.Program>>
     {
-        protected readonly WebApplicationFactory<TestsStartup> _factory;
+        protected readonly WebApplicationFactory<DemoApi.Program> _factory;
 
-        public TestsBase(WebApplicationFactory<TestsStartup> factory)
+        public TestsBase(WebApplicationFactory<DemoApi.Program> factory)
         {
             _factory = factory;
             Client = _factory.CreateClient();

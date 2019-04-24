@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.Testing;
 
 namespace SubFolder_InheritedWebApplicationFactoryTests
 {
-    public class TestsWebApplicationFactory : WebApplicationFactory<TestsStartup>
+    public class TestsWebApplicationFactory : WebApplicationFactory<DemoApi.Program>
     {
         protected override IWebHostBuilder CreateWebHostBuilder()
         {
