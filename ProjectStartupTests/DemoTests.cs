@@ -1,5 +1,7 @@
+using DemoApi;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.Extensions.DependencyInjection;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -11,6 +13,13 @@ namespace ProjectStartupTests
     {
         public DemoTests(WebApplicationFactory<DemoApi.Startup> factory) : base(factory)
         {
+        }
+
+        [Fact]
+        public void ShouldUseDemoStartup()
+        {
+            var dummyService = ServiceProvider.GetService<IDummyService>();
+            dummyService.DoSomething().Should().Be(nameof(DummyServiceDemo));
         }
 
         [Fact]

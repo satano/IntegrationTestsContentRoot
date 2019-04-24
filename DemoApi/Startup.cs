@@ -29,7 +29,13 @@ namespace DemoApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            ConfigureServicesCore(services);
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+        }
+
+        protected virtual void ConfigureServicesCore(IServiceCollection services)
+        {
+            services.AddSingleton<IDummyService, DummyServiceDemo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

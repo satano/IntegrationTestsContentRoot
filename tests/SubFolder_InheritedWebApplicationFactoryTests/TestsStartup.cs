@@ -1,6 +1,6 @@
 ﻿using DemoApi;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace SubFolder_InheritedWebApplicationFactoryTests
 {
@@ -10,7 +10,9 @@ namespace SubFolder_InheritedWebApplicationFactoryTests
         {
         }
 
-        protected override IConfigurationBuilder CreateConfigurationBuilder(IHostingEnvironment env)
-            => base.CreateConfigurationBuilder(env);
+        protected override void ConfigureServicesCore(IServiceCollection services)
+        {
+            services.AddSingleton<IDummyService, DummyServiceTest>();
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using DemoApi;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace TestServerTests
 {
@@ -10,7 +10,9 @@ namespace TestServerTests
         {
         }
 
-        protected override IConfigurationBuilder CreateConfigurationBuilder(IHostingEnvironment env)
-            => base.CreateConfigurationBuilder(env);
+        protected override void ConfigureServicesCore(IServiceCollection services)
+        {
+            services.AddSingleton<IDummyService, DummyServiceTest>();
+        }
     }
 }

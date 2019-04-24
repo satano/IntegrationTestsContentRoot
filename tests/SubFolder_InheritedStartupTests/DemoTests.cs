@@ -1,5 +1,7 @@
+using DemoApi;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.Extensions.DependencyInjection;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -11,6 +13,13 @@ namespace SubFolder_InheritedStartupTests
     {
         public DemoTests(WebApplicationFactory<TestsStartup> factory) : base(factory)
         {
+        }
+
+        [Fact]
+        public void ShouldUseTestsStartup()
+        {
+            var dummyService = ServiceProvider.GetService<IDummyService>();
+            dummyService.DoSomething().Should().Be(nameof(DummyServiceTest));
         }
 
         [Fact]

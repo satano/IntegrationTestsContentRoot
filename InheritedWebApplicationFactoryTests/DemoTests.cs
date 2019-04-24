@@ -1,4 +1,6 @@
+using DemoApi;
 using FluentAssertions;
+using Microsoft.Extensions.DependencyInjection;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -10,6 +12,13 @@ namespace InheritedWebApplicationFactoryTests
     {
         public DemoTests(TestsWebApplicationFactory factory) : base(factory)
         {
+        }
+
+        [Fact]
+        public void ShouldUseTestsStartup()
+        {
+            var dummyService = ServiceProvider.GetService<IDummyService>();
+            dummyService.DoSomething().Should().Be(nameof(DummyServiceTest));
         }
 
         [Fact]

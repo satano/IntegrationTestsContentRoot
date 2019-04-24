@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using DemoApi;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace InheritedStartupTests
 {
@@ -6,6 +8,11 @@ namespace InheritedStartupTests
     {
         public TestsStartup(IHostingEnvironment env) : base(env)
         {
+        }
+
+        protected override void ConfigureServicesCore(IServiceCollection services)
+        {
+            services.AddSingleton<IDummyService, DummyServiceTest>();
         }
     }
 }
